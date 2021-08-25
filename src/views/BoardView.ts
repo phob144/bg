@@ -3,6 +3,7 @@ import { TileButton } from '../components/TileButton';
 import { State } from '../enums/State';
 import { PixiEvents } from '../utils/PixiEvents';
 import { SimpleItemPool } from '../utils/SimpleItemPool';
+import { SpriteMap } from '../utils/SpriteMap';
 import { unique } from '../utils/unique';
 
 export class BoardView extends Container {
@@ -34,7 +35,9 @@ export class BoardView extends Container {
     public update(state: State[][]) {
         for (let i = 0; i < BoardView._COLUMNS; i++) {
             for (let j = 0; j < BoardView._ROWS; j++) {
-                this._tiles[i][j];
+                this.removeChild(this._tiles[i][j]);
+
+                this._tiles[i][j].sprite = SpriteMap.assets.get(state[i][j]);
             }
         }
     }
@@ -63,11 +66,12 @@ export class BoardView extends Container {
                     BoardView._BUTTON_WIDTH,
                     BoardView._BUTTON_HEIGHT,
                     color,
-                    i,
-                    j
+                    null
                 );
                 square.x = i * BoardView._BUTTON_WIDTH;
                 square.y = j * BoardView._BUTTON_HEIGHT;
+                square.xPos = i;
+                square.yPos = j;
                 square.on(PixiEvents.CLICK, this.onTileClick, this);
 
                 row.push(square);

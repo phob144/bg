@@ -1,6 +1,16 @@
 export enum State {
     empty = 'empty',
+    door = 'door',
+    key = 'key',
+    monster = 'monster',
+    player_down = 'player_down',
+    player_east = 'player_east',
+    player_north = 'player_north',
+    player_north_south = 'player_north_south',
+    player_south = 'player_south',
+    player_up = 'player_up',
+    player_west = 'player_west',
+    player_west_east = 'player_west_east',
+    sword = 'sword',
     wall = 'wall',
-    player = 'player',
-    itemSword = 'itemSword',
 }

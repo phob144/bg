@@ -16,11 +16,11 @@ export class SelectionModel extends EventDispatcher {
     private _eventDispatcher: IEventDispatcher;
 
     private _selectedState: State;
-    private _selectedX: number;
-    private _selectedY: number;
 
     constructor() {
         super();
+
+        this._selectedState = State.empty;
     }
 
     public get selectedState(): State {
@@ -30,7 +30,7 @@ export class SelectionModel extends EventDispatcher {
     public set selectedState(state: State) {
         this._selectedState = state;
 
-        this.dispatchChanged();
+        // this.dispatchChanged();
     }
 
     private dispatchChanged() {

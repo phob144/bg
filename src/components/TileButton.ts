@@ -4,7 +4,8 @@ import { PixiEvents } from '../utils/PixiEvents';
 export class TileButton extends Container {
     private _background: Graphics;
     private _clickBackground: Graphics;
-    private _image: Sprite;
+
+    private _color: number;
 
     public xPos: number;
     public yPos: number;
@@ -13,8 +14,7 @@ export class TileButton extends Container {
         width: number,
         height: number,
         color: number,
-        xPos: number,
-        yPos: number
+        spritePath: string
     ) {
         super();
 
@@ -24,14 +24,16 @@ export class TileButton extends Container {
         this.width = width;
         this.height = height;
 
-        this.xPos = xPos;
-        this.yPos = yPos;
-
-        this.initBackground(width, height, color);
+        this.initBackground(width, height, color, spritePath);
         this.initEvents();
     }
 
-    private initBackground(width: number, height: number, color: number) {
+    private initBackground(
+        width: number,
+        height: number,
+        color: number,
+        spritePath: string
+    ) {
         this._background = new Graphics();
         this._background.beginFill(color);
         this._background.drawRect(0, 0, width, height);
@@ -41,6 +43,21 @@ export class TileButton extends Container {
         this._clickBackground.beginFill(Math.min(color + 0x101010, 0xffffff));
         this._clickBackground.drawRect(0, 0, width, height);
         this._clickBackground.endFill();
+
+        if (spritePath != null) {
+            const backgroundSprite = Sprite.from(spritePath);
+            backgroundSprite.anchor.set(-0.5, -0.5);
+
+            this._background.addChild(backgroundSprite);
+
+            const clickBackgroundSprite = Sprite.from(spritePath);
+            clickBackgroundSprite.anchor.set(-0.5, -0.5);
+
+            this._clickBackground.addChild(clickBackgroundSprite);
+        } else {
+            this._background.removeChildren();
+            this._clickBackground.removeChildren();
+        }
 
         this.addChild(this._background);
     }
@@ -59,7 +76,7 @@ export class TileButton extends Container {
         this.removeChild(this._clickBackground);
     }
 
-    public set backgroundColor(color: number) {
-        this.initBackground(this.width, this.height, color);
+    public set sprite(path: string) {
+        this.initBackground(this.width, this.height, this._color, path);
     }
 }

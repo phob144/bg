@@ -19,9 +19,13 @@ export class BoardModel extends EventDispatcher {
 
     constructor() {
         super();
+
+        this.clear();
     }
 
     public clear() {
+        this._boardState = [];
+
         for (let i = 0; i < 5; i++) {
             let row = [];
 
@@ -32,7 +36,7 @@ export class BoardModel extends EventDispatcher {
             this._boardState.push(row);
         }
 
-        this.dispatchChanged();
+        // this.dispatchChanged();
     }
 
     public setTile(x: number, y: number, state: State) {

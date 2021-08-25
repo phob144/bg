@@ -24,8 +24,6 @@ export class ItemListViewMediator extends Mediator<ItemListView> {
     }
 
     public onToggled(state: State) {
-        console.log(state);
-
         this._eventDispatcher.dispatchEvent(
             new SelectedEvent(SelectedEvent.SELECTED, state)
         );

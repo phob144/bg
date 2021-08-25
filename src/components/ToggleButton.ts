@@ -1,7 +1,6 @@
-import { Container, Graphics } from 'pixi.js';
+import { Container, Graphics, Sprite } from 'pixi.js';
 import { State } from '../enums/State';
 import { PixiEvents } from '../utils/PixiEvents';
-import { TileButton } from './TileButton';
 
 export class ToggleButton extends Container {
     private _background: Graphics;
@@ -11,7 +10,12 @@ export class ToggleButton extends Container {
 
     public state: State;
 
-    constructor(width: number, height: number, color: number) {
+    constructor(
+        width: number,
+        height: number,
+        color: number,
+        spritePath: string
+    ) {
         super();
 
         this.interactive = true;
@@ -20,20 +24,33 @@ export class ToggleButton extends Container {
         this.width = width;
         this.height = height;
 
-        this.initBackground(width, height, color);
+        this.initBackground(width, height, color, spritePath);
         this.initEvents();
     }
 
-    private initBackground(width: number, height: number, color: number) {
+    private initBackground(
+        width: number,
+        height: number,
+        color: number,
+        spritePath: string
+    ) {
+        const backgroundSprite = Sprite.from(spritePath);
+        backgroundSprite.anchor.set(-0.5, -0.5);
+
         this._background = new Graphics();
         this._background.beginFill(color);
         this._background.drawRect(0, 0, width, height);
         this._background.endFill();
+        this._background.addChild(backgroundSprite);
+
+        const clickBackgroundSprite = Sprite.from(spritePath);
+        clickBackgroundSprite.anchor.set(-0.5, -0.5);
 
         this._clickBackground = new Graphics();
         this._clickBackground.beginFill(Math.min(color + 0x101010, 0xffffff));
         this._clickBackground.drawRect(0, 0, width, height);
         this._clickBackground.endFill();
+        this._clickBackground.addChild(clickBackgroundSprite);
 
         this.addChild(this._background);
     }
