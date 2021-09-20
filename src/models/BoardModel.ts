@@ -3,6 +3,7 @@ import {
     IEventDispatcher,
     inject,
     injectable,
+    Event,
 } from '@robotlegsjs/core';
 import { unique } from '../utils/unique';
 import { State } from '../enums/State';
@@ -12,15 +13,12 @@ export class BoardModel extends EventDispatcher {
     @unique
     public static readonly CHANGE: string;
 
-    @inject(IEventDispatcher)
-    private _eventDispatcher: IEventDispatcher;
+    @inject(IEventDispatcher) private _eventDispatcher: IEventDispatcher;
 
     private _boardState: State[][];
 
     constructor() {
         super();
-
-        this.clear();
     }
 
     public clear() {
@@ -36,7 +34,9 @@ export class BoardModel extends EventDispatcher {
             this._boardState.push(row);
         }
 
-        // this.dispatchChanged();
+        console.log('CLEARING!!!!');
+
+        this.dispatchChanged();
     }
 
     public setTile(x: number, y: number, state: State) {

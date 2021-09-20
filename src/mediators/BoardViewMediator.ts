@@ -2,6 +2,7 @@ import { Event, IEventDispatcher, inject, injectable } from '@robotlegsjs/core';
 import { Mediator } from '@robotlegsjs/pixi';
 import { TileButton } from '../components/TileButton';
 import { BoardClickEvent } from '../events/BoardClickEvent';
+import { OtherEvents } from '../events/OtherEvents';
 import { BoardModel } from '../models/BoardModel';
 import { BoardView } from '../views/BoardView';
 
@@ -18,6 +19,11 @@ export class BoardViewMediator extends Mediator<BoardView> {
         this.addContextListener(BoardModel.CHANGE, this.onModelChanged, this);
 
         this.addViewListener(BoardView.TILE_CLICKED, this.onTileClicked, this);
+        this.addViewListener(
+            BoardView.CLEAR_CLICKED,
+            this.onClearClicked,
+            this
+        );
 
         this.view.initialize();
     }
@@ -33,6 +39,12 @@ export class BoardViewMediator extends Mediator<BoardView> {
     private onTileClicked(xPos: number, yPos: number) {
         this._eventDispatcher.dispatchEvent(
             new BoardClickEvent(BoardClickEvent.TILE_CLICKED, xPos, yPos)
+        );
+    }
+
+    private onClearClicked() {
+        this._eventDispatcher.dispatchEvent(
+            new Event(OtherEvents.CLEAR_CLICKED)
         );
     }
 }

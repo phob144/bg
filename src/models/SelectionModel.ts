@@ -3,6 +3,7 @@ import {
     IEventDispatcher,
     inject,
     injectable,
+    Event,
 } from '@robotlegsjs/core';
 import { State } from '../enums/State';
 import { unique } from '../utils/unique';
@@ -19,8 +20,12 @@ export class SelectionModel extends EventDispatcher {
 
     constructor() {
         super();
+    }
 
+    public clear() {
         this._selectedState = State.empty;
+
+        this.dispatchChanged();
     }
 
     public get selectedState(): State {
@@ -30,7 +35,7 @@ export class SelectionModel extends EventDispatcher {
     public set selectedState(state: State) {
         this._selectedState = state;
 
-        // this.dispatchChanged();
+        this.dispatchChanged();
     }
 
     private dispatchChanged() {

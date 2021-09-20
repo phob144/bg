@@ -21,7 +21,5 @@ export class SelectedCommand {
         } else {
             this._model.selectedState = this._event.selectedState;
         }
-
-        console.log(this._model.selectedState);
     }
 }

@@ -60,7 +60,7 @@
                 "h": 48
             }
         },
-        "player_down.png": {
+        "player_east.png": {
             "frame": {
                 "x": 151,
                 "y": 1,
@@ -80,7 +80,7 @@
                 "h": 48
             }
         },
-        "player_east.png": {
+        "player_north.png": {
             "frame": {
                 "x": 201,
                 "y": 1,
@@ -100,7 +100,7 @@
                 "h": 48
             }
         },
-        "player_north.png": {
+        "player_south.png": {
             "frame": {
                 "x": 251,
                 "y": 1,
@@ -120,7 +120,7 @@
                 "h": 48
             }
         },
-        "player_north_south.png": {
+        "player_west.png": {
             "frame": {
                 "x": 301,
                 "y": 1,
@@ -140,7 +140,7 @@
                 "h": 48
             }
         },
-        "player_south.png": {
+        "sword.png": {
             "frame": {
                 "x": 351,
                 "y": 1,
@@ -160,89 +160,9 @@
                 "h": 48
             }
         },
-        "player_up.png": {
-            "frame": {
-                "x": 401,
-                "y": 1,
-                "w": 48,
-                "h": 48
-            },
-            "rotated": false,
-            "trimmed": false,
-            "spriteSourceSize": {
-                "x": 0,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            },
-            "sourceSize": {
-                "w": 48,
-                "h": 48
-            }
-        },
-        "player_west.png": {
-            "frame": {
-                "x": 451,
-                "y": 1,
-                "w": 48,
-                "h": 48
-            },
-            "rotated": false,
-            "trimmed": false,
-            "spriteSourceSize": {
-                "x": 0,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            },
-            "sourceSize": {
-                "w": 48,
-                "h": 48
-            }
-        },
-        "player_west_east.png": {
-            "frame": {
-                "x": 501,
-                "y": 1,
-                "w": 48,
-                "h": 48
-            },
-            "rotated": false,
-            "trimmed": false,
-            "spriteSourceSize": {
-                "x": 0,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            },
-            "sourceSize": {
-                "w": 48,
-                "h": 48
-            }
-        },
-        "sword.png": {
-            "frame": {
-                "x": 551,
-                "y": 1,
-                "w": 48,
-                "h": 48
-            },
-            "rotated": false,
-            "trimmed": false,
-            "spriteSourceSize": {
-                "x": 0,
-                "y": 0,
-                "w": 48,
-                "h": 48
-            },
-            "sourceSize": {
-                "w": 48,
-                "h": 48
-            }
-        },
         "wall.png": {
             "frame": {
-                "x": 601,
+                "x": 401,
                 "y": 1,
                 "w": 48,
                 "h": 48
@@ -267,7 +187,7 @@
         "image": "spritesheet.png",
         "format": "RGBA8888",
         "size": {
-            "w": 650,
+            "w": 450,
             "h": 50
         },
         "scale": "1"

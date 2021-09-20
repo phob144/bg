@@ -18,11 +18,22 @@ export class ItemListView extends Container {
 
     private _toggles: ToggleButton[];
 
-    private _wall: ToggleButton;
-    private _sword: ToggleButton;
-
     constructor() {
         super();
+    }
+
+    public update(state: State) {
+        if (!this._toggles) {
+            return;
+        }
+
+        this._toggles.forEach((x) => {
+            x.toggled = true;
+        });
+
+        if (state != State.empty) {
+            this._toggles.find((x) => x.state == state).toggled = false;
+        }
     }
 
     public initialize() {
@@ -53,6 +64,8 @@ export class ItemListView extends Container {
     }
 
     private initToggles() {
+        this._toggles = [];
+
         const keys = Object.keys(State);
 
         for (let i = 0; i < keys.length; i++) {
@@ -72,6 +85,8 @@ export class ItemListView extends Container {
             toggleButton.y = (i % 5) * ItemListView._BUTTON_HEIGHT;
             toggleButton.state = State[key];
             toggleButton.on(PixiEvents.CLICK, this.onToggled, this);
+
+            this._toggles.push(toggleButton);
 
             this.addChild(toggleButton);
         }

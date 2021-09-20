@@ -25,7 +25,6 @@ export class ToggleButton extends Container {
         this.height = height;
 
         this.initBackground(width, height, color, spritePath);
-        this.initEvents();
     }
 
     private initBackground(
@@ -55,17 +54,19 @@ export class ToggleButton extends Container {
         this.addChild(this._background);
     }
 
-    private initEvents() {
-        this.on(PixiEvents.POINTER_DOWN, this.toggle);
+    public get toggled(): boolean {
+        return this._toggled;
     }
 
-    public toggle() {
+    public set toggled(value: boolean) {
+        this._toggled = value;
+
         if (!this._toggled) {
             this.addChild(this._clickBackground);
         } else {
-            this.removeChild(this._clickBackground);
+            if (this._clickBackground.parent) {
+                this.removeChild(this._clickBackground);
+            }
         }
-
-        this._toggled = !this._toggled;
     }
 }
