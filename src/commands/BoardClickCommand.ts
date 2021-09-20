@@ -4,7 +4,7 @@ import { BoardClickEvent } from '../events/BoardClickEvent';
 import { SelectedEvent } from '../events/SelectedEvent';
 import { BoardModel } from '../models/BoardModel';
 import { SelectionModel } from '../models/SelectionModel';
-import { ArrayUtils as ArrayUtil } from '../utils/ArrayUtil';
+import { ArrayUtil as ArrayUtil } from '../utils/ArrayUtil';
 
 @injectable()
 export class BoardClickCommand {

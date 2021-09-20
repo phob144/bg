@@ -1,4 +1,4 @@
-export class ArrayUtils {
+export class ArrayUtil {
     public static contains<T>(arr: T[][], search: T): boolean {
         return arr.some((row) => row.indexOf(search) != -1);
     }

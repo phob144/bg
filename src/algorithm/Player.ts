@@ -20,6 +20,15 @@ export class Player {
         this.items.set(item, this.value % 4);
     }
 
+    public move(x: number, y: number): Player {
+        let clone = new Player(new Vector(x, y), this.face);
+
+        clone.value = this.value;
+        clone.items = this.items;
+
+        return clone;
+    }
+
     public moveLeft(): Player {
         let clone = new Player(this.position.add(new Vector(-1, 0)), this.face);
 
